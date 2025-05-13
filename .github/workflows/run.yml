@@ -1,0 +1,37 @@
+name: shua
+on:
+  schedule:
+    - cron: '05 11 * * *'
+  workflow_dispatch:
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout codes
+        uses: actions/checkout@v4
+      - name: 初始化Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.12'
+      - name: 开始
+        run: |
+          pip3 install requests
+          user='${{ secrets.USER }}'
+          passwd='${{ secrets.PWD }}' 
+          open_get_weather='${{ secrets.OPEN_GET_WEATHER }}'
+          area='${{ secrets.AREA }}'
+          sckey='${{ secrets.SCKEY }}'
+          python3 main.py $user $passwd $open_get_weather $area $sckey
+          if [ $? -ne 0 ]; then
+            echo "命令执行失败，重新从第一步开始运行..."
+            # 这里重新执行第一步和第二步
+            uses: actions/checkout@v4
+            uses: actions/setup-python@v4
+            with:
+              python-version: '3.12'
+            pip3 install requests
+            python3 main.py $user $passwd $open_get_weather $area $sckey
+          else
+            echo "脚本成功运行。"
+          time=$(TZ=UTC-8 date +'%Y-%m-%d %H:%M:%S')
+          echo "最后一次运行时间: $time（北京时间）"
