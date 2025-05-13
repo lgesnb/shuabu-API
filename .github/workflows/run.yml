@@ -1,26 +1,18 @@
 name: shua
-
 on:
   schedule:
     - cron: '05 11 * * *'
   workflow_dispatch:
-
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout codes
         uses: actions/checkout@v4
-       #name: Update system and install zsh
-       #run: |
-         #sudo -E apt-get -qq update
-         #sudo -E apt-get install zsh -y
-          
       - name: 初始化Python
         uses: actions/setup-python@v4
         with:
-          python3-version: '3.12'
-          
+          python-version: '3.12'
       - name: 开始
         run: |
           pip3 install requests
@@ -29,12 +21,14 @@ jobs:
           open_get_weather='${{ secrets.OPEN_GET_WEATHER }}'
           area='${{ secrets.AREA }}'
           sckey='${{ secrets.SCKEY }}'
-          # 尝试运行Python脚本
           python3 main.py $user $passwd $open_get_weather $area $sckey
+          # 检查上一个命令的返回值
           if [ $? -ne 0 ]; then
-            echo "运行失败，等待5分钟后重试..."
+            echo "运行失败，等待5分钟（300秒）后自动重新运行..."
             sleep 300
             python3 main.py $user $passwd $open_get_weather $area $sckey
+          else
+            echo "脚本成功运行。"
           fi
           time=$(TZ=UTC-8 date +'%Y-%m-%d %H:%M:%S')
           echo "最后一次运行时间: $time（北京时间）"
