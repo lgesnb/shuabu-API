@@ -240,22 +240,7 @@ def get_app_token(login_token):
             response = requests.get(url, headers=headers, timeout=5).json()
             app_token = response['token_info']['app_token']
             return app_token
- 
-# 推送server
-def push_wx(desp=""):
-    if sckey == 'NO':
-        print(sckey == "NO")
-        return
-    else:
-        server_url = f"https://sctapi.ftqq.com/{sckey}.send"
-        params = {
-            "text": '【✍小米运动步数修改✍】',
-            "desp": desp
-        }
-
-        response = requests.get(server_url, params=params).text
-        print(response)
-        
+         
 def main_handler(event, context):
     getBeijinTime()
 
