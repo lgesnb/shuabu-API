@@ -43,7 +43,6 @@ def getBeijinTime():
             msg_mi = ""
             for user_mi, passwd_mi in zip(user_list, passwd_list):
                 msg_mi += main(user_mi, passwd_mi, min_1, max_1)
-            print("此次修改结果不推送")
     else:
         print("当前主人设置了0步数呢，本次不提交")
         return
