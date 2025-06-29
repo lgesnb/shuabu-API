@@ -27,4 +27,4 @@ jobs:
       - name: 记录执行时间
         run: |
           echo "最后执行时间: $(TZ=Asia/Shanghai date +'%Y-%m-%d %H:%M:%S')（北京时间）" >> last_run.txt
-          cat last_run.txt
+          cat last_run.txt 
