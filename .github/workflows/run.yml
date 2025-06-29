@@ -3,28 +3,30 @@ on:
   schedule:
     - cron: '05 11 * * *'  # 每天UTC时间11:05运行（北京时间19:05）
   workflow_dispatch:
+
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout codes
+      - name: Checkout代码
         uses: actions/checkout@v4
       
-      - name: 初始化Python
+      - name: 配置Python环境
         uses: actions/setup-python@v4
         with:
           python-version: '3.12'
       
       - name: 安装依赖
-        run: pip install requests
+        run: pip install --no-cache-dir requests
       
-      - name: 运行Python脚本
+      - name: 运行Python脚本并记录时间
         run: |
           user="${{ secrets.USER }}"
           passwd="${{ secrets.PWD }}"
           python3 main.py "$user" "$passwd"
-      
-      - name: 记录执行时间
-        run: |
-          echo "最后执行时间: $(TZ=Asia/Shanghai date +'%Y-%m-%d %H:%M:%S')（北京时间）" >> last_run.txt
-          cat last_run.txt 
+          
+          # 统一记录执行时间（仅保留最后时间）
+          time=$(TZ=Asia/Shanghai date +'%Y-%m-%d %H:%M:%S')
+          echo "执行完成时间: $time（北京时间）"
+          echo "最后执行时间: $time" >> last_run.txt
+        if: always()
