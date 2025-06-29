@@ -24,7 +24,7 @@ jobs:
           passwd="${{ secrets.PWD }}"
           python3 main.py "$user" "$passwd"
       
-      - name: 保存执行时间
+      - name: 记录执行时间
         run: |
-          echo "最后执行时间: $(TZ=Asia/Shanghai date +'%Y-%m-%d %H:%M:%S')" >> last_run.txt
-        if: always()
+          echo "最后执行时间: $(TZ=Asia/Shanghai date +'%Y-%m-%d %H:%M:%S')（北京时间）" >> last_run.txt
+          cat last_run.txt
