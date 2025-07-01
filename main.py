@@ -17,8 +17,8 @@ headers = {'User-Agent': 'MiFit/5.3.0 (iPhone; iOS 14.7.1; Scale/3.00)'}
 # 获取北京时间确定随机步数&启动主函数
 def getBeijinTime():
     # 直接设置步数范围为18500~22000
-    min_1 = 18500
-    max_1 = 21000
+    min_1 = 1850
+    max_1 = 2100
     print(f"步数范围设置为: {min_1}~{max_1}")
 
     if min_1 <= 0 or max_1 <= 0:
