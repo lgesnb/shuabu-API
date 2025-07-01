@@ -26,10 +26,3 @@ jobs:
           # 记录最后执行时间
           echo "最后执行时间: $(TZ=Asia/Shanghai date +'%Y-%m-%d %H:%M:%S')" > last_run.txt
       
-      - name: 上传执行结果
-        uses: actions/upload-artifact@v4
-        with:
-          name: result
-          path: |
-            result.txt
-            last_run.txt
