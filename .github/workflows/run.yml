@@ -17,12 +17,19 @@ jobs:
           python-version: '3.12'
       
       - name: 安装依赖
-        run: pip install --no-cache-dir requests
+        run: pip install --no-cache-dir requests pytz
       
       - name: 运行Python脚本
         run: |
-          # 从GitHub Secrets获取凭据
           python3 main.py "${{ secrets.USER }}" "${{ secrets.PWD }}"
           
-          # 记录执行时间（北京时间）
+          # 记录最后执行时间
           echo "最后执行时间: $(TZ=Asia/Shanghai date +'%Y-%m-%d %H:%M:%S')" > last_run.txt
+      
+      - name: 上传执行结果
+        uses: actions/upload-artifact@v3
+        with:
+          name: result
+          path: |
+            result.txt
+            last_run.txt
