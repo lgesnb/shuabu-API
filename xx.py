@@ -12,7 +12,12 @@ time_bj = datetime.datetime.today() + datetime.timedelta(hours=8)
 now = time_bj.strftime("%Y-%m-%d %H:%M:%S")
 headers = {'User-Agent': 'MiFit/5.3.0 (iPhone; iOS 14.7.1; Scale/3.00)'}
 
-def getBeijinTime():
+def get_beijing_time():
+    # 使用timezone.utc获取UTC时间，再加8小时转换为北京时间
+    utc_time = datetime.now(timezone.utc)
+    beijing_time = utc_time + datetime.timedelta(hours=8)
+    return beijing_time
+    
     # 固定步数范围 18000-22000
     min_1 = 800
     max_1 = 1000
@@ -87,7 +92,9 @@ def main(_user, _passwd, min_1, max_1):
         print("登陆失败！")
         return "login fail!"
 
-    t = int((datetime.datetime.now(UTC) + datetime.timedelta(hours=8)).timestamp() * 1000)
+    beijing_time = get_beijing_time()
+today = beijing_time.strftime("%Y-%m-%d")
+timestamp = int(beijing_time.timestamp() * 1000)  
     app_token = get_app_token(login_token)
     today = datetime.datetime.now().strftime("%Y-%m-%d")
     
