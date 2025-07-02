@@ -1,4 +1,5 @@
 # -*- coding: utf8 -*-
+from datetime import UTC
 import datetime
 import random
 import sys
@@ -86,7 +87,7 @@ def main(_user, _passwd, min_1, max_1):
         print("登陆失败！")
         return "login fail!"
 
-    t = int((datetime.datetime.utcnow() + datetime.timedelta(hours=8)).timestamp() * 1000)
+    t = int((datetime.datetime.now(UTC) + datetime.timedelta(hours=8)).timestamp() * 1000)
     app_token = get_app_token(login_token)
     today = datetime.datetime.now().strftime("%Y-%m-%d")
     
