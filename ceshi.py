@@ -69,7 +69,7 @@ if __name__ == "__main__":
         print("用法: python main.py <账号> <密码>")
         sys.exit(1)
     
-    min_steps = 20100
+    min_steps = 18400
     max_steps = 22000
     account = sys.argv[1]
     password = sys.argv[2]
