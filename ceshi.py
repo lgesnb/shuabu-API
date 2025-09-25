@@ -75,7 +75,7 @@ if __name__ == "__main__":
     password = sys.argv[2]
     
     # 设置超时时间为30秒，最大重试次数为3次
-    result = modify_steps(account, password, min_steps, max_steps, timeout=30, max_retries=3)
+    result = modify_steps(account, password, min_steps, max_steps, timeout=30, max_retries=1)
     
     # 根据最终结果退出程序
     if result:
