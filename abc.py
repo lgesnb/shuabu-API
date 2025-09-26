@@ -58,7 +58,7 @@ def get_code(location):
 
 # 登录
 def login(user, password):
-    url1 = "https://api-user.huami.com/registrations/" + user + "/tokens"
+    url1 = "https://api-user.zepp.com/registrations/" + user + "/tokens"
     headers = {
         "Content-Type": "application/x-www-form-urlencoded;charset=UTF-8",
         "User-Agent": "Mozilla/5.0 (iPhone; CPU iPhone OS 14_7_1 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/14.1.2"
@@ -82,7 +82,7 @@ def login(user, password):
         print("登录失败: 无法提取授权码")
         return 0, 0
         
-    url2 = "https://account.huami.com/v2/client/login"
+    url2 = "https://account.zepp.com/v2/client/login"
     data2 = {
         "allow_registration=": "false",
         "app_name": "com.xiaomi.hm.health",
@@ -91,7 +91,7 @@ def login(user, password):
         "country_code": "CN",
         "device_id": "7C8D4939-1DCD-5E94-9CBA-DC8FA7E724B2",
         "device_model": "phone",
-        "dn": "api-user.huami.com%2Capi-mifit.huami.com%2Capp-analytics.huami.com",
+        "dn": "api-user.zepp.com%2Capi-mifit.zepp.com%2Capp-analytics.zepp.com",
         "grant_type": "access_token",
         "lang": "zh_CN",
         "os_version": "1.5.0",
@@ -169,7 +169,7 @@ def get_time():
         
 # 获取app_token
 def get_app_token(login_token):
-    url = f"https://account-cn.huami.com/v1/client/app_tokens?app_name=com.xiaomi.hm.health&dn=api-user.huami.com%2Capi-mifit.huami.com%2Capp-analytics.huami.com&login_token={login_token}"
+    url = f"https://account-cn.zepp.com/v1/client/app_tokens?app_name=com.xiaomi.hm.health&dn=api-user.huami.com%2Capi-mifit.huami.com%2Capp-analytics.huami.com&login_token={login_token}"
     for retry in range(3):
         try:
             response = requests.get(url, headers=headers, timeout=5).json()
