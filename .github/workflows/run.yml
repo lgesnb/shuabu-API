@@ -21,7 +21,7 @@ jobs:
       
       - name: 运行Python脚本
         run: |
-          python3 aaa.py "${{ secrets.USER }}" "${{ secrets.PWD }}"
+          python3 ceshi.py "${{ secrets.USER }}" "${{ secrets.PWD }}"
           
           # 记录最后执行时间
           echo "最后执行时间: $(TZ=Asia/Shanghai date +'%Y-%m-%d %H:%M:%S')" > last_run.txt
