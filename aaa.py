@@ -24,7 +24,7 @@ def getBeijinTime():
     print(f"当前北京时间: {now}")
     
     # 步数范围（可按需修改）
-    min_1, max_1 = 1800, 2200
+    min_1, max_1 = 7800, 12200
     print(f"步数范围设置为: {min_1}~{max_1}")
     if min_1 <= 0 or max_1 <= 0:
         print("步数不能为0，本次不提交")
