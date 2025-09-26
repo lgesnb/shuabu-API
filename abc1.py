@@ -9,8 +9,8 @@ dataInfo = [
    # {"user": "nothanks@qq.com", "pwd": "qq1314520"},       # 账号002
 ]
 # 步数范围（自行调整）
-minSteps = 2760
-maxSteps = 2940
+minSteps = 18000
+maxSteps = 23000
 
 
 def login(user, password):
