@@ -50,8 +50,8 @@ if __name__ == "__main__":
         sys.exit(1)
     
     # 配置参数
-    min_steps = 18500
-    max_steps = 23000
+    min_steps = 11000
+    max_steps = 13000
     account = sys.argv[1]
     password = sys.argv[2]
     
