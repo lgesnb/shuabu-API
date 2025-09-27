@@ -103,7 +103,7 @@ def get_app_token(login_token):
         return None
 
 # 4. 提交步数（核心）
-def submit_steps(_user, _passwd, min_step=18000, max_step=22000):
+def submit_steps(_user, _passwd, min_step=11000, max_step=12000):
     user = str(_user)
     password = str(_passwd)
     target_step = str(random.randint(min_step, max_step))
