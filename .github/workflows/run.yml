@@ -1,5 +1,5 @@
 name: 步数自动运行写入
-on:
+off:
   schedule:
     - cron: '05 11 * * *'  # 每天UTC时间11:05（北京时间19:05）
   workflow_dispatch:
