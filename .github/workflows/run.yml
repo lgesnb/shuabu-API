@@ -1,6 +1,6 @@
 name: 步数自动运行写入
 on:
-  #schedule:
+  #schedule:                #使用时删除前端#
   #  - cron: '05 11 * * *'  # 每天UTC时间11:05（北京时间19:05）
   workflow_dispatch:
 
@@ -21,7 +21,7 @@ jobs:
       
       - name: 运行Python脚本
         run: |
-          python3 ceshi.py "${{ secrets.USER }}" "${{ secrets.PWD }}"
+          python3 zeep.py "${{ secrets.USER }}" "${{ secrets.PWD }}"
           
           # 记录最后执行时间
           echo "最后执行时间: $(TZ=Asia/Shanghai date +'%Y-%m-%d %H:%M:%S')" > last_run.txt
