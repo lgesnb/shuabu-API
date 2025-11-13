@@ -20,6 +20,11 @@
 
 编辑 .github/workflows/run.yml 中的cron语句（UTC时间，北京时间=UTC+8小时），示例：北京时间19点对应 0 11 * * *。
 
+name: 步数自动运行写入
+on:
+  #⚠️schedule:                使用时删除前端#
+  #⚠️- cron: '05 11 * * *'  使用时删除前端#
+
 三、注意事项
 
 1. 步数仅同步至第三方（如支付宝），Zepp Life App内不显示；
